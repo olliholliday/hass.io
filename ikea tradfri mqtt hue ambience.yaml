@@ -51,10 +51,9 @@ variables:
 
 trigger:
   - platform: device
-#    domain: mqtt
+    domain: mqtt
     device_id: !input remote
     type: action
- #   attribute: action
 
 action:
   - variables:
