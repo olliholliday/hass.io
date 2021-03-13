@@ -61,7 +61,6 @@ trigger:
     device_id: !input remote
     type: action
     subtype: toggle
-    discovery_id: []    
   - platform: device
     domain: mqtt
     device_id: !input remote
