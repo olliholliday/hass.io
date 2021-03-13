@@ -55,12 +55,6 @@ trigger:
     device_id: !input remote
     type: action
     subtype: toggle
-    discovery_id: ''
-  - platform: device
-    domain: mqtt
-    device_id: !input remote
-    type: action
-    subtype: toggle
     discovery_id: 0x680ae2fffec2040d action_toggle
 
 action:
