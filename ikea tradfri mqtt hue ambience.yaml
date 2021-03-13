@@ -1,0 +1,61 @@
+blueprint:
+  name: IKEA Tradfri MQTT
+  description: |
+   Testing
+  domain: automation
+  input:
+    remote:
+      name: Remote
+      description: IKEA remote to use
+      selector:
+        # entity:
+        #   integration: mqtt
+        #   domain: sensor
+        device:
+          manufacturer: IKEA
+          model: TRADFRI remote control (E1524/E1810)
+          entity:
+            domain: sensor       
+    light:
+      name: Light(s)
+      description: The light(s) to control
+      selector:
+        target:
+          entity:
+            domain: light
+    force_brightness:
+      name: Force turn on brightness
+      description: >
+        Force the brightness to the set level below, when the "on" button on
+        the remote is pushed and lights turn on.
+      default: false
+      selector:
+        boolean:
+    brightness:
+      name: Brightness
+      description: Brightness of the light(s) when turning on
+      default: 50
+      selector:
+        number:
+          min: 0
+          max: 100
+          mode: slider
+          step: 1
+          unit_of_measurement: "%"
+
+mode: restart
+max_exceeded: silent
+
+variables:
+  force_brightness: !input force_brightness
+
+trigger:
+  - platform: device
+#    domain: mqtt
+    device_id: !input remote
+    type: action
+ #   attribute: action
+
+action:
+  - variables:
+      command: "{{ trigger.subtype }}"
