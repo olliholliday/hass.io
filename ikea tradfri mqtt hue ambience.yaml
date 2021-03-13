@@ -54,9 +54,23 @@ trigger:
     domain: mqtt
     device_id: !input remote
     type: action
-    subtype: action
-    discovery_id: dummy
+    subtype: toggle
+    discovery_id: ''
+  - platform: device
+    domain: mqtt
+    device_id: !input remote
+    type: action
+    subtype: toggle
+    discovery_id: []    
+  - platform: device
+    domain: mqtt
+    device_id: !input remote
+    type: action
+    subtype: toggle
+    discovery_id: 0x680ae2fffec2040d action_toggle
 
 action:
-  - variables:
-      command: "{{ trigger.subtype }}"
+  service: system_log.write
+  data:
+    message: "{{ trigger }}"
+    level: info      
