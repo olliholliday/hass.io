@@ -54,6 +54,8 @@ trigger:
     domain: mqtt
     device_id: !input remote
     type: action
+    subtype: action
+    discovery_id: dummy
 
 action:
   - variables:
